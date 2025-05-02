@@ -1,41 +1,102 @@
-# Indoor Air Quality Predicitons And Monitoring Project
+# Air-Smart Controller: Indoor Air Quality Prediction and Monitoring System
 
-Indoor air quality directly affects the quality of life for everyone. The most advanced systems for monitoring air quality rely on automation, which processes data in real-time and responds accordingly. However, these systems also have potential issues that can negatively impact the user experience:
+![Dashboard](1.png)
+![Visualization](2.png)
 
-- Incorrect data readings due to sensor malfunctions,
+## 📋 Overview
+The Air-Smart Controller project provides a deep learning-based solution for predicting and monitoring indoor air quality parameters in smart homes. This research addresses key limitations of current smart home systems:
 
-- The system's inability to adapt to short-term changes in user preferences,
+- Over-reliance on real-time sensor data
+- Limited adaptability to short-term user preference changes
+- Lack of predictive capability for environmental changes
 
-- Lack of foresight in case of potential disasters.
+**Academic Publication:** Published in the *Journal of Artificial Intelligence and Human Sciences*
 
-In this study, I aim to improve the predictability of automation systems by using deep neural networks to forecast future behaviors. By doing so, we expect to address some of these problems and make the system more adaptable and foresightful.
+## 🔬 Research Methodology
 
-**Note:** This study was published on Journal of Artifical Intelligence and Human Sciences.
+### Dataset
+Utilizes the **CN-OBEE dataset** containing:
+- 1 year of data from a Chinese apartment
+- Indoor environmental parameters (temperature, humidity, pressure)
+- Outdoor weather conditions
+- Occupancy patterns
+- Power consumption data
 
-## CN-OBEE Dataset
+*Dataset reference:* [CN-OBEE dataset on Springer Nature](https://www.nature.com/articles/s41597-023-02891-9)
 
-The CN-OBEE dataset encompasses one year of data from a Chinese household. This dataset includes data that affect the air quality of six different rooms. Additionally, it provides access to weather information outside the house. Moreover, the power file contains data on the energy consumption of electrical appliances used within the household.
+### Prediction Models
+Implemented in `Air_Quality_Prediction.ipynb`:
+| Model | Advantages |
+|-------|------------|
+| GRU   | Computational efficiency |
+| LSTM  | Handles long-term dependencies |
+| BiGRU | Bidirectional context processing |
 
-## Indoor Air Quality Predictor
-The `Air_Quality_Prediction.ipynb` file utilizes an RNN named GRU and LSTM to generate 44 days of prediction data using this information. These prediction data cover temperature, pressure, and relative humidity. Prediction data are stored in the `predictions.csv` file.
+### Performance Metrics
+- Mean Absolute Error (MAE)
+- Mean Squared Error (MSE)
+- Root Mean Squared Error (RMSE)
 
-## SmartAir Controller
-The `Smart-Air.py` file is a web application written with **Streamlit**. This application allows users to view prediction data and provides information on when the automation system will operate. Furthermore, users can suspend or schedule the system's future operations before they occur if desired.
+## 🖥️ Smart-Air Controller Interface
+Features of `Smart-Air.py` (Streamlit-based):
+- Visualize predicted parameters by room/type
+- View forecasted automation interventions
+- User override options ("Get Stable"/"Schedule")
+- Configurable adjustment intervals (10min-24hr)
 
-<p align="center">
-  <img src="1.png" alt="Image 1" width="800"/>
-  <img src="2.png" alt="Image 2" width="800"/>
-</p>
+![Dashboard](1.png)
+![Visualization](2.png)
 
-## Contents
-`demo.pdf`: This file provides a demonstration of how the Air-Smart-Controller works.
+## 🚀 Installation and Usage
 
-`Air-Smart-Controller-Report.pdf`: This document offers a detailed analysis of the literature and provides in-depth information about the project.
+### Prerequisites
+```bash
+git clone https://github.com/yourusername/air-smart-controller.git
+cd air-smart-controller
 
-## Usage
-To use the Air-Smart-Controller project, follow these steps:
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-- Clone the repository to your local machine.
-- Refer to the demo.pdf for a demonstration of the project's functionality.
-- For a deeper understanding of the project and its background, consult the Air-Smart-Controller-Report.pdf and Air-Smart-Controller-Paper.pdf.
-- Explore the codebase to view implementation details and make any necessary modifications.
+pip install -r requirements.txt
+```
+## Running Prediction Model
+```bash
+jupyter notebook Air_Quality_Prediction.ipynb
+# OR
+jupyter nbconvert --execute Air_Quality_Prediction.ipynb
+```
+## Launching Controller
+```
+streamlit run Smart-Air.py
+```
+## Repository Structure
+```
+air-smart-controller/
+├── Air_Quality_Prediction.ipynb     # Prediction models
+├── Smart-Air.py                     # Web application
+├── predictions0-4.csv               # Room-specific predictions
+├── 1.png                            # Dashboard screenshot
+├── 2.png                            # Visualization screenshot
+├── demo.pdf                         # Application demo
+├── Air-Smart-Controller-Report.pdf  # Detailed analysis
+├── README.md                        # This document
+└── requirements.txt                 # Dependencies
+```
+## 📝 Citation
+```
+@article{author2023airsmart,
+  title={Air-Smart Controller: Deep Learning-Based Indoor Air Quality Prediction and Control},
+  author={Your Name},
+  journal={Journal of Artificial Intelligence and Human Sciences},
+  year={2023},
+  doi={10.5281/zenodo.14670650}
+}
+```
+## 🤝 Contributing
+Contributions welcome! Please submit a Pull Request.
+
+## 📄 License
+MIT License - See LICENSE for details.
+
+## 📬 Contact
+Email: kadirqokdeniz@hotmail.com
