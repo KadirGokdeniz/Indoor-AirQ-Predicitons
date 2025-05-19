@@ -96,7 +96,7 @@ air-smart-controller/
 Contributions welcome! Please submit a Pull Request.
 
 ## 📄 License
-MIT License - See LICENSE for details.
+GNU GENERAL PUBLIC License - See LICENSE for details.
 
 ## 📬 Contact
 Email: kadirqokdeniz@hotmail.com
